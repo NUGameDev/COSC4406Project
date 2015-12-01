@@ -6,6 +6,7 @@ public class BreathManager : MonoBehaviour {
     public Slider breathslider;
     private float currentbreath;
     public float jumpBreath = 5.0f;
+	public float pufferBreath = 25.0f;
     // Use this for initialization
     void Start () {
         currentbreath = breathslider.value;
@@ -15,6 +16,14 @@ public class BreathManager : MonoBehaviour {
 	void Update () {
         breathslider.value = currentbreath;
     }
+	public void BreathPuffer()
+	{
+		if (currentbreath <= 100.0f) {
+			currentbreath += pufferBreath;
+		}
+		else
+		{currentbreath = 100.0f;}
+	}
     public void BreathJump()
     {
         currentbreath -= jumpBreath;
