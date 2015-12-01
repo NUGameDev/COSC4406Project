@@ -155,6 +155,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb57b64fa7fceeb46a593f3d30aa65f8, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1038105718 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11422356, guid: 006b7b9d305d8524e92b215ee8273f84,
+    type: 2}
+  m_PrefabInternal: {fileID: 1442695692}
+  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1442695692
 Prefab:
   m_ObjectHideFlags: 0
@@ -164,19 +170,19 @@ Prefab:
     m_Modifications:
     - target: {fileID: 22419950, guid: 006b7b9d305d8524e92b215ee8273f84, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22419950, guid: 006b7b9d305d8524e92b215ee8273f84, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22418226, guid: 006b7b9d305d8524e92b215ee8273f84, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22418226, guid: 006b7b9d305d8524e92b215ee8273f84, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22411924, guid: 006b7b9d305d8524e92b215ee8273f84, type: 2}
       propertyPath: m_LocalPosition.x
@@ -372,6 +378,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1915557723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1915557717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf94a1ddebd1ecf4ea1078c0ccc6e811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breathslider: {fileID: 1038105718}
+  jumpBreath: 5
 --- !u!1 &1953408334
 GameObject:
   m_ObjectHideFlags: 0
