@@ -65,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -84,9 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!127 &5
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!1001 &36009949
 Prefab:
   m_ObjectHideFlags: 0
@@ -261,6 +259,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 006b7b9d305d8524e92b215ee8273f84, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1476561888 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11406378, guid: 006b7b9d305d8524e92b215ee8273f84,
+    type: 2}
+  m_PrefabInternal: {fileID: 1442695692}
+  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1691907822
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +400,7 @@ MonoBehaviour:
   runDepletionRate: 1
   recoveryWait: 1000
   recoveryRate: 1.88999999
+  pufferBreath: 25
 --- !u!135 &1915557724
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -408,6 +413,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .170000002
   m_Center: {x: 0, y: 0, z: .0299999993}
+--- !u!114 &1915557725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1915557717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ac2344af60a89439a99b979e7db4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Puff: {fileID: 0}
+  ObjectSpawnPosition: {x: 0, y: 0, z: 0}
+  Pufferslider: {fileID: 1476561888}
 --- !u!1 &1953408334
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +495,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
