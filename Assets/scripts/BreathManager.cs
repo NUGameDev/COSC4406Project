@@ -11,6 +11,7 @@ public class BreathManager : MonoBehaviour {
     public float runDepletionRate = 1.0f;
     public long recoveryWait = 2000;
     public float recoveryRate = 1f;
+    public float pufferBreath = 25.0f;
 
     Stopwatch recoveryTimer = new Stopwatch();
     MovementManager mm;
@@ -46,6 +47,12 @@ public class BreathManager : MonoBehaviour {
     {
         currentbreath -= jumpDepletionRate;
     }
+
+    public void BreathPuffer()
+    {
+        currentbreath = Math.Min(breathslider.maxValue, currentbreath + pufferBreath);
+    }
+
     public bool CanJump()
     {
         return currentbreath >= jumpDepletionRate;
