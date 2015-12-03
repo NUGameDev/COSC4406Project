@@ -5,13 +5,13 @@ using System.Diagnostics;
 using System;
 
 public class BreathManager : MonoBehaviour {
-    public Slider breathslider;
-    private float currentbreath;
-    public float jumpDepletionRate = 5.0f;
-    public float runDepletionRate = 1.0f;
-    public long recoveryWait = 2000;
-    public float recoveryRate = 1f;
-    public float pufferBreath = 25.0f;
+    public Slider breathslider;//Silder used to display current breath
+    private float currentbreath;//Variable that holds the current breath
+    public float jumpDepletionRate = 5.0f;//Variable that holds the amount of breath used to jump
+    public float runDepletionRate = 1.0f;//Variable that holds the amount of breath used while running
+    public long recoveryWait = 2000;//Amount of time the player must be still before breath begins to recover
+    public float recoveryRate = 1f;//Amount the breath recovers while waiting
+    public float pufferBreath = 25.0f;//Amount of breath using the puffer restores
 
     Stopwatch recoveryTimer = new Stopwatch();
     MovementManager mm;

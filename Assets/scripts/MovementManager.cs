@@ -51,7 +51,8 @@ public class MovementManager : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        grounded = false;
+		if (other.CompareTag("Floor"))
+        	grounded = false;
     }
     public bool IsMoving()
     {
