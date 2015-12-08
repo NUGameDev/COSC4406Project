@@ -7,18 +7,34 @@ using System;
 public class BreathManager : MonoBehaviour {
     public Slider breathslider;//Silder used to display current breath
     private float currentbreath;//Variable that holds the current breath
-    public float jumpDepletionRate = 5.0f;//Variable that holds the amount of breath used to jump
-    public float runDepletionRate = 1.0f;//Variable that holds the amount of breath used while running
-    public long recoveryWait = 2000;//Amount of time the player must be still before breath begins to recover
-    public float recoveryRate = 1f;//Amount the breath recovers while waiting
-    public float pufferBreath = 25.0f;//Amount of breath using the puffer restores
+    public float jumpDepletionRate = 0.0f;//Variable that holds the amount of breath used to jump
+	public float runDepletionRate = 0.0f;//Variable that holds the amount of breath used while running
+    public long recoveryWait = 0;//Amount of time the player must be still before breath begins to recover
+    public float recoveryRate = 0.0f;//Amount the breath recovers while waiting
+    public float pufferBreath = 0.0f;//Amount of breath using the puffer restores
 
     Stopwatch recoveryTimer = new Stopwatch();//Stopwatch used to determine if the user has been waiting long enough.
     MovementManager mm;
+	ConfigManager cm;
     void Start () {//Runs on scene load
+		string fromconfig;
+		cm = GetComponent<ConfigManager> ();//Gets the ConfigManager
         mm = GetComponent<MovementManager>();//Gets the movementmanager 
         currentbreath = breathslider.value;//Sets the breath slider to the current breath
         recoveryTimer.Start();//Starts the recovery timer
+
+		//Up coming block populates the variables from the config file
+		fromconfig = cm.Load("jumpDepletionRate");
+		jumpDepletionRate = (float)Int32.Parse(fromconfig);
+		fromconfig = cm.Load("runDepletionRate");
+		runDepletionRate = (float)Int32.Parse(fromconfig);
+		fromconfig = cm.Load("recoveryWait");
+		recoveryWait = (long)Int32.Parse(fromconfig);
+		fromconfig = cm.Load("recoveryRate");
+		recoveryRate = (float)Int32.Parse(fromconfig);
+		fromconfig = cm.Load("pufferBreath");
+		pufferBreath = (float)Int32.Parse(fromconfig);
+		//end of populate
 	}
 	
 
