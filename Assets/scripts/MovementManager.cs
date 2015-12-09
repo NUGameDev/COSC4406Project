@@ -1,24 +1,30 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+using System;
 public class MovementManager : MonoBehaviour
 {
    // public Slider breathslider;
   //  private float currentbreath;
     Rigidbody rb;
-    public float MoveSpeed = 10.0f;
-    public float JumpSpeed = 20.0f;
 
+    public float MoveSpeed = 0.0f;
+    public float JumpSpeed = 0.0f;
     bool grounded = false;
     BreathManager bm;
-    
+	ConfigManager cm;
     // Use this for initialization
     void Start()
     {
+		string fromconfig;
+		cm = GetComponent<ConfigManager> ();
         rb = GetComponent<Rigidbody>();
       //  currentbreath = breathslider.value;
         bm = GetComponent<BreathManager>();
+		fromconfig = cm.Load("MoveSpeed");
+		MoveSpeed = (float)Int32.Parse(fromconfig);
+		fromconfig = cm.Load("JumpSpeed");
+		JumpSpeed = (float)Int32.Parse(fromconfig);
 
     }
 
@@ -51,7 +57,8 @@ public class MovementManager : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        grounded = false;
+		if (other.CompareTag("Floor"))
+        	grounded = false;
     }
     public bool IsMoving()
     {

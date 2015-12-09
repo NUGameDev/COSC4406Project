@@ -98,7 +98,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: fb57b64fa7fceeb46a593f3d30aa65f8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.65999985
+      value: 7.65999985
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: fb57b64fa7fceeb46a593f3d30aa65f8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -151,6 +151,10 @@ Prefab:
     - target: {fileID: 400018, guid: fb57b64fa7fceeb46a593f3d30aa65f8, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: fb57b64fa7fceeb46a593f3d30aa65f8, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb57b64fa7fceeb46a593f3d30aa65f8, type: 2}
@@ -256,15 +260,84 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11416428, guid: 006b7b9d305d8524e92b215ee8273f84, type: 2}
+      propertyPath: progressBar
+      value: 
+      objectReference: {fileID: 1442695693}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 006b7b9d305d8524e92b215ee8273f84, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &1442695693 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22454874, guid: 006b7b9d305d8524e92b215ee8273f84,
+    type: 2}
+  m_PrefabInternal: {fileID: 1442695692}
 --- !u!114 &1476561888 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11406378, guid: 006b7b9d305d8524e92b215ee8273f84,
     type: 2}
   m_PrefabInternal: {fileID: 1442695692}
   m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &1671424642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1671424644}
+  - 108: {fileID: 1671424643}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1671424643
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1671424642}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: .800000012
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_NormalBias: .400000006
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
+--- !u!4 &1671424644
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1671424642}
+  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
+  m_LocalPosition: {x: 2.05569625, y: .108346492, z: 10.8994656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1 &1691907822
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,8 +427,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d3080f528f87742955ddd72b092d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
-  JumpSpeed: 8
+  MoveSpeed: 0
+  JumpSpeed: 0
+--- !u!114 &1915557720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1915557717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6f58ccbac250349b392a5fa53b7d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configdata: 
+  line: 
 --- !u!136 &1915557721
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -396,11 +482,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breathslider: {fileID: 1038105718}
-  jumpDepletionRate: 5
-  runDepletionRate: 1
-  recoveryWait: 1000
-  recoveryRate: 1.88999999
-  pufferBreath: 25
+  jumpDepletionRate: 0
+  runDepletionRate: 0
+  recoveryWait: 0
+  recoveryRate: 0
+  pufferBreath: 0
 --- !u!135 &1915557724
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -424,9 +510,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ac2344af60a89439a99b979e7db4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puff: {fileID: 0}
+  Puff: {fileID: 447218, guid: fd33526e492eb0c45bbc38c7362ba389, type: 2}
   ObjectSpawnPosition: {x: 0, y: 0, z: 0}
   Pufferslider: {fileID: 1476561888}
+  pufferIncrease: 10
+--- !u!153 &1915557726
+ConfigurableJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1915557717}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 11.6899996, y: 7.65999985, z: 9.94999981}
+  serializedVersion: 2
+  m_SecondaryAxis: {x: 0, y: 1, z: 0}
+  m_XMotion: 2
+  m_YMotion: 2
+  m_ZMotion: 2
+  m_AngularXMotion: 2
+  m_AngularYMotion: 2
+  m_AngularZMotion: 2
+  m_LinearLimitSpring:
+    spring: 0
+    damper: 0
+  m_LinearLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularXLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowAngularXLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_HighAngularXLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularYZLimitSpring:
+    spring: 0
+    damper: 0
+  m_AngularYLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularZLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_TargetPosition: {x: 0, y: 0, z: 0}
+  m_TargetVelocity: {x: 0, y: 0, z: 0}
+  m_XDrive:
+    serializedVersion: 2
+    mode: 0
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.40282326e+38
+  m_YDrive:
+    serializedVersion: 2
+    mode: 0
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.40282326e+38
+  m_ZDrive:
+    serializedVersion: 2
+    mode: 0
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.40282326e+38
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
+  m_RotationDriveMode: 0
+  m_AngularXDrive:
+    serializedVersion: 2
+    mode: 0
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.40282326e+38
+  m_AngularYZDrive:
+    serializedVersion: 2
+    mode: 0
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.40282326e+38
+  m_SlerpDrive:
+    serializedVersion: 2
+    mode: 0
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.40282326e+38
+  m_ProjectionMode: 0
+  m_ProjectionDistance: .100000001
+  m_ProjectionAngle: 180
+  m_ConfiguredInWorldSpace: 0
+  m_SwapBodies: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
 --- !u!1 &1953408334
 GameObject:
   m_ObjectHideFlags: 0
