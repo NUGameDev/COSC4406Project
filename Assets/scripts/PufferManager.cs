@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class PufferManager : MonoBehaviour {
 	public Transform Puff;
 	public Vector3 ObjectSpawnPosition;
 	public Slider Pufferslider;
+	public float pufferIncrease = 10;
 	private float CurrentPuffer;
+	private float maxPuffer;
 	BreathManager bm;
 	// Use this for initialization
 	void Start () {
 
 		CurrentPuffer = Pufferslider.value;
+		maxPuffer = Pufferslider.maxValue;
 		bm = GetComponent<BreathManager>();
 	}
 	
@@ -39,5 +43,8 @@ public class PufferManager : MonoBehaviour {
 	}
 	public bool HasPuff(){
 		return CurrentPuffer > 0.0f;
+	}
+	public void IncreasePuffer(){
+		CurrentPuffer = Math.Max (CurrentPuffer + pufferIncrease, maxPuffer);
 	}
 }
