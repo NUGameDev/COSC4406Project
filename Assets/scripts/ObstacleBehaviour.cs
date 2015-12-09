@@ -11,6 +11,7 @@ using System.Collections;
 /// The modification of player health is managed by scripts on the player itself. 
 /// </summary>
 public  class ObstacleBehaviour : MonoBehaviour {
+
     /// <summary>
     /// Enum representing the current aggro state of the obstacle, if present
     /// </summary>
@@ -23,7 +24,7 @@ public  class ObstacleBehaviour : MonoBehaviour {
     public bool hasAggro = false;
     public bool canChase = false;
 
-    public int health = 100;
+    public int maxHealth = 100;
     public int damageDone = 25;
 
     public float aggroRangeEngage = 5.0f;
@@ -31,7 +32,8 @@ public  class ObstacleBehaviour : MonoBehaviour {
 
     public float runSpeed = 5.0f;
 
-    private AggroState aggroState = AggroState.Idle; 
+    private AggroState aggroState = AggroState.Idle;
+    private int currentHealth;
     GameObject player = null; //reference to the player object in the scene
     Rigidbody rb = null; //rigidbody of the obstacle, if one exists. 
 
@@ -39,8 +41,9 @@ public  class ObstacleBehaviour : MonoBehaviour {
     /// <summary>
     /// Initialization
     /// </summary>
-    void Start()
+    protected void Start()
     {
+        currentHealth = maxHealth;
         //grab reference to player 
         player = GameObject.Find("Player");
         //grab reference to rigidbody, if one exists. 
@@ -65,6 +68,7 @@ public  class ObstacleBehaviour : MonoBehaviour {
     protected virtual void updateAggro()
     {
         if (!hasAggro) return;
+        if (this.isDead()) return;
         switch (this.aggroState)
         {
             case AggroState.Idle:
@@ -92,11 +96,28 @@ public  class ObstacleBehaviour : MonoBehaviour {
         if (!canChase) return; //only if we can chase
         if (this.rb == null) return; //if we don't have a rigidbody then we can't move. 
         if (this.aggroState != AggroState.Aggro) return; //only if we're aggroing
+        if (this.isDead()) return; 
 
         Vector3 displacement = player.transform.position - transform.position;
         float direction = Mathf.Sign(displacement.x);
         //apply velocity
         this.rb.velocity = new Vector3(direction * this.runSpeed, rb.velocity.y, rb.velocity.z);
+    }
+
+    public int getHealth()
+    {
+        return this.currentHealth;
+    }
+
+    public bool isDead()
+    {
+        return currentHealth <= 0;
+    }
+
+    //Do damage to the obstacle. 
+    public void doDamage(int damage)
+    {
+        currentHealth = Mathf.Max(0, currentHealth - damage);
     }
     
 
