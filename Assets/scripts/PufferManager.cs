@@ -3,15 +3,22 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Diagnostics;
 using System;
+
 public class PufferManager : MonoBehaviour {
-	public Transform Puff;//game object used to hold the puffer cloud
-	public Vector3 ObjectSpawnPosition;//Vector that the puffer cloud spawns at
-	public Slider Pufferslider;//Slider object that displays current puffer charge
-	private float CurrentPuffer;//Float that stores current puffer charge
-	BreathManager bm;//Breath manager component
-	void Start () {//Runs on startup
-		CurrentPuffer = Pufferslider.value;// Sets the current puffer charge to the maximum
-		bm = GetComponent<BreathManager>();//Gets the breath manager component
+	public Transform Puff;
+	public Vector3 ObjectSpawnPosition;
+	public Slider Pufferslider;
+	public float pufferIncrease = 10;
+	private float CurrentPuffer;
+	private float maxPuffer;
+	BreathManager bm;
+	// Use this for initialization
+	void Start () {
+
+		CurrentPuffer = Pufferslider.value;
+		maxPuffer = Pufferslider.maxValue;
+		bm = GetComponent<BreathManager>();
+
 	}
 
 	void Update () 	// Update is called once per frame
@@ -37,5 +44,8 @@ public class PufferManager : MonoBehaviour {
 	}
 	public bool HasPuff(){//Function that returns if the puffer charger is create than zero
 		return CurrentPuffer > 0.0f;//Returns true if puffer charger is greater than zero, returns false otheriwse
+	}
+	public void IncreasePuffer(){
+		CurrentPuffer = Math.Max (CurrentPuffer + pufferIncrease, maxPuffer);
 	}
 }
