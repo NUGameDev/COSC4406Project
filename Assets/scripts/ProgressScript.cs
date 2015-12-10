@@ -17,7 +17,7 @@ public class ProgressScript : MonoBehaviour
 	void Start () 
 	{
 		//Get components
-		player = GameObject.FindGameObjectWithTag ("Player").transform;	//Player must be Tagged
+		player = GameObject.Find("Player").transform;	//Player must be Tagged
 		progressCircle = GetComponent<RectTransform> ();
 		//progressBar = GetComponentInParent (RectTransform); //Get component from parent
 		float circleWidth = progressCircle.rect.width;		//Width of circle 

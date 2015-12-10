@@ -7,16 +7,16 @@ public class PufferPickup : MonoBehaviour {
 
 	public float pufferRecharge = 20f;
 
-	private PufferManager pm;
 	private float yCenter;
 	private float yMove;
 	private float bobRange = 0.4f;
 	private float bobSpeed = 0.7f;
+    PlayerManager pm;
 	// Use this for initialization
 	void Start () {
-		pm = GameObject.Find ("Player").GetComponent<PufferManager> ();
 		yCenter = transform.position.y;
 		yMove = 0f;
+        pm = GameObject.Find("Player").GetComponent<PlayerManager>();
 	}
 	
 	// Update is called once per frame
@@ -33,8 +33,8 @@ public class PufferPickup : MonoBehaviour {
 	{
 		if(other.CompareTag ("Player"))
 		{
-			pm.IncreasePuffer();
-			Destroy(gameObject);
+			pm.addPufferCharge(pufferRecharge);
+			Destroy(gameObject); //destroy this capsule
 		}
 	}
 }

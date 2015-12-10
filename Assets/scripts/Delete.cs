@@ -6,11 +6,8 @@ public class Delete : MonoBehaviour {
 	ConfigManager cm;
 	// Use this for initialization
 	void Start () {
-		string fromconfig;//Used to load in values from the config file
 		cm = GetComponent<ConfigManager> ();//Gets the ConfigManager
-		int Duration;//Stores the lifespan of the puffer cloud
-		fromconfig = cm.Load("Duration");
-		Duration = Int32.Parse(fromconfig);
+		float Duration = 1.0f;//Stores the lifespan of the puffer cloud
 		Lifetime = Time.time + Duration;//Sets the delete timer to the future
 	}
 	
