@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	void PauseGame(bool state){ //pause the game or unpause it
+        print("Pause Game");
 		if (state) {
 			PausePanel.SetActive (true);
 			Time.timeScale = 0.0f;
@@ -35,6 +36,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void switchPause(){ //Switch between pause or not
+        print("SwitchPause");
 		if (isPaused) {
 			isPaused = false;
 		} else {
@@ -44,6 +46,7 @@ public class UIManager : MonoBehaviour {
 
 	public void ReturnMenu()
 	{
+        print("ReturnMenu");
 		//SceneManager.LoadScene (Menu_Scene);
 		Application.LoadLevel (0); //Return to main menu, level 0
 	}
