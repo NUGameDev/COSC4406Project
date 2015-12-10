@@ -4,8 +4,8 @@ using System.Collections;
 
 public class ProgressScript : MonoBehaviour 
 {
-	public float startPos = 0.0f;	//placeholders for start and end points
-	public float endPos = 100.0f;	//will need GameObjects for these positions in each level
+	private float startPos;	//placeholders for start and end points
+	private float endPos;	//will need GameObjects for these positions in each level
 	//public float playerPos = 0.0f;	//for testing
 
 	private float barWidth;			//Width of progress bar
@@ -17,6 +17,9 @@ public class ProgressScript : MonoBehaviour
 	void Start () 
 	{
 		//Get components
+
+		startPos = GameObject.Find ("LevelStart").GetComponent<Transform> ().position.x;
+		endPos = GameObject.Find ("LevelEnd").GetComponent<Transform> ().position.x;
 		player = GameObject.Find("Player").transform;	//Player must be Tagged
 		progressCircle = GetComponent<RectTransform> ();
 		//progressBar = GetComponentInParent (RectTransform); //Get component from parent
