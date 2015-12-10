@@ -17,6 +17,7 @@ public class ProgressScript : MonoBehaviour
 	void Start () 
 	{
 		//Get components
+
 		startPos = GameObject.Find ("LevelStart").GetComponent<Transform> ().position.x;
 		endPos = GameObject.Find ("LevelEnd").GetComponent<Transform> ().position.x;
 		player = GameObject.Find("Player").transform;	//Player must be Tagged

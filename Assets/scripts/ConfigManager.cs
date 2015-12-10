@@ -7,7 +7,7 @@ public class ConfigManager : MonoBehaviour {
 	public string line;
 	public string Load(string tag)//function used pull values from the config file
 	{
-		string filename = Application.dataPath +"/config.ini"; //The path of the config file
+		string filename = Application.dataPath +"/Resources/config.ini"; //The path of the config file
 		StreamReader theReader = new StreamReader(filename, Encoding.Default);//Reader used to read in lines
 		using (theReader)
 		{
