@@ -5,8 +5,8 @@ using System;
 
 public class PufferPickup : MonoBehaviour {
 
-	public float pufferRecharge = 20f;
-
+	public float pufferRecharge;
+	private ConfigManager cm;
 	private float yCenter;
 	private float yMove;
 	private float bobRange = 0.4f;
@@ -14,9 +14,11 @@ public class PufferPickup : MonoBehaviour {
     PlayerManager pm;
 	// Use this for initialization
 	void Start () {
+		cm = GetComponent<ConfigManager>();
 		yCenter = transform.position.y;
 		yMove = 0f;
         pm = GameObject.Find("Player").GetComponent<PlayerManager>();
+		pufferRecharge = (float)Double.Parse(cm.Load ("pufferRecharge"));
 	}
 	
 	// Update is called once per frame

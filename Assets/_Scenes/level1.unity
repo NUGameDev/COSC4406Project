@@ -424,6 +424,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pufferSlider: {fileID: 1476561888}
   breathSlider: {fileID: 1038105718}
+--- !u!114 &1129077065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129077059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6f58ccbac250349b392a5fa53b7d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configdata: 
+  line: 
 --- !u!1001 &1442695692
 Prefab:
   m_ObjectHideFlags: 0
@@ -751,17 +764,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4a1781571896c428016c3ba27ef7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 8
-  JumpSpeed: 10
-  JumpDepletionAmount: 5
-  RunDepletionRate: 1.5
-  BreathRecoveryTimeout: 2000
-  BreathRecoveryRate: 3.5
-  PufferBreathRecovered: 25
-  MaxBreath: 100
-  MaxPufferCharge: 100
-  PufferCostSelf: 20
-  PufferCostSpray: 10
+  MoveSpeed: 0
+  JumpSpeed: 0
+  JumpDepletionAmount: 0
+  RunDepletionRate: 0
+  BreathRecoveryTimeout: 0
+  BreathRecoveryRate: 0
+  PufferBreathRecovered: 0
+  MaxBreath: 0
+  MaxPufferCharge: 0
+  PufferCostSelf: 0
+  PufferCostSpray: 0
   PufferCloud: {fileID: 447218, guid: fd33526e492eb0c45bbc38c7362ba389, type: 2}
 --- !u!136 &1915557721
 CapsuleCollider:
@@ -791,6 +804,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1915557723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1915557717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6f58ccbac250349b392a5fa53b7d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configdata: 
+  line: 
 --- !u!135 &1915557724
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -889,3 +915,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1915557718}
   m_RootOrder: 2
+--- !u!1 &2111825410 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 191712, guid: 505f05441294a634982b7f91db9d72a5, type: 2}
+  m_PrefabInternal: {fileID: 1644992883}
+--- !u!114 &2111825411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2111825410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6f58ccbac250349b392a5fa53b7d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configdata: 
+  line: 
