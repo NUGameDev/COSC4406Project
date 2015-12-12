@@ -21,6 +21,13 @@ public class ConfigManager : MonoBehaviour {
 						line = theReader.ReadLine();//loads next value after tag
 						break;//breaks the loop
 					}
+					if (line == null)//makes sure the line isn't null
+					{
+						Debug.Log(tag);
+						configdata = "1";
+						theReader.Close();//closes the reader
+						return configdata;//returns the requested value from the config file
+					}
 				}
 				while(1==1);
 				if (line != null)//makes sure the line isn't null
