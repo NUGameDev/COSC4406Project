@@ -11,26 +11,27 @@ public class PlayerManager: MonoBehaviour {
     private const float ROTATION_ANGLE_RIGHT = 90.0f;
     private const float ROTATION_ANGLE_LEFT = 270.0f; 
 
-    public float MoveSpeed = 8.0f;
-    public float JumpSpeed = 10.0f;
+    public float MoveSpeed;
+    public float JumpSpeed;
 
-    public float JumpDepletionAmount = 5.0f;
-    public float RunDepletionRate = 1.5f;
-    public int   BreathRecoveryTimeout = 2000;
-    public float BreathRecoveryRate = 3.5f;
-    public float PufferBreathRecovered = 25f;
+    public float JumpDepletionAmount;
+    public float RunDepletionRate;
+    public int   BreathRecoveryTimeout;
+    public float BreathRecoveryRate;
+    public float PufferBreathRecovered;
 
-    public float MaxBreath = 100f;
-    public float MaxPufferCharge = 100f;
+    public float MaxBreath;
+    public float MaxPufferCharge;
 
-    public float PufferCostSelf = 20f;
-    public float PufferCostSpray = 10f;
+    public float PufferCostSelf;
+    public float PufferCostSpray;
 
     private float currentBreath;
     private float currentPufferCharge;
 
     public Transform PufferCloud = null;
 
+	private ConfigManager cm;
     private Rigidbody rb;
     private int direction = 1; //1 means looking left, -1 means looking right. 
     private bool grounded = false;
@@ -39,10 +40,22 @@ public class PlayerManager: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        currentBreath = MaxBreath;
-        currentPufferCharge = MaxPufferCharge;
-
+		cm = GetComponent<ConfigManager> ();
         rb = GetComponent<Rigidbody>();
+
+		MoveSpeed =  (float)Double.Parse(cm.Load ("MoveSpeed"));
+		JumpSpeed =  (float)Double.Parse(cm.Load ("JumpSpeed"));
+		JumpDepletionAmount =  (float)Double.Parse(cm.Load ("JumpDepletionAmount"));
+		RunDepletionRate =  (float)Double.Parse(cm.Load ("RunDepletionRate"));
+		BreathRecoveryTimeout =  Int32.Parse(cm.Load ("BreathRecoveryTimeout"));
+		BreathRecoveryRate =  (float)Double.Parse(cm.Load ("BreathRecoveryRate"));
+		PufferBreathRecovered =  (float)Double.Parse(cm.Load ("PufferBreathRecovered"));
+		MaxBreath =  (float)Double.Parse(cm.Load ("MaxBreath"));
+		MaxPufferCharge =  (float)Double.Parse(cm.Load ("MaxPufferCharge"));
+		PufferCostSelf =  (float)Double.Parse(cm.Load ("PufferCostSelf"));
+		PufferCostSpray =  (float)Double.Parse(cm.Load ("PufferCostSpray"));
+		currentBreath = MaxBreath;
+		currentPufferCharge = MaxPufferCharge;
 	}
 
     /// <summary>
