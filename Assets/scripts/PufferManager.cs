@@ -31,7 +31,7 @@ public class PufferManager : MonoBehaviour {
 			AttackPuff();//Calls AttackPuff
 		}
 	}
-	void RestoreBreath(){//Function used to restore breath when called
+	 void RestoreBreath(){//Function used to restore breath when called
 		PufferUse();//Calls PufferUse
 		bm.BreathPuffer();//Calls BreathPuffer from the BreathManager class
 	}
