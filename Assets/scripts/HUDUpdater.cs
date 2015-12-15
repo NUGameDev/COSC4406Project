@@ -11,7 +11,7 @@ public class HUDUpdater : MonoBehaviour {
     public Slider breathSlider;
     // Use this for initialization
     void Start () {
-		cm = GetComponent<ConfigManager> ();
+		cm = GameObject.Find ("Configuration").GetComponent <ConfigManager>();// GetComponent<ConfigManager> ();
         pm = GameObject.Find("Player").GetComponent<PlayerManager>();
 		pufferSlider.maxValue = (float)Double.Parse(cm.Load ("MaxPufferCharge"));;
 		breathSlider.maxValue = (float)Double.Parse(cm.Load ("MaxBreath"));
