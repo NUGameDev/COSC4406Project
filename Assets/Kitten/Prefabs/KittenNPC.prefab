@@ -160,9 +160,11 @@ GameObject:
   - 4: {fileID: 481240}
   - 111: {fileID: 11169888}
   - 95: {fileID: 9557816}
-  - 54: {fileID: 5450278}
   - 136: {fileID: 13620466}
   - 114: {fileID: 11477978}
+  - 54: {fileID: 5478976}
+  - 136: {fileID: 13626052}
+  - 114: {fileID: 11483280}
   m_Layer: 0
   m_Name: KittenNPC
   m_TagString: Player
@@ -1774,7 +1776,7 @@ Transform:
   - {fileID: 450594}
   m_Father: {fileID: 481880}
   m_RootOrder: 1
---- !u!54 &5450278
+--- !u!54 &5478976
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1841,11 +1843,44 @@ MonoBehaviour:
   hasAggro: 1
   canChase: 1
   maxHealth: 100
+  damageDone: 5
+  damageTimeout: .75
+  aggroRangeEngage: 5
+  aggroRangeFalloff: 10
+  runSpeed: 5
+--- !u!114 &11483280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8643d7c48aae7bd47ac4a3032aebd7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasAggro: 1
+  canChase: 1
+  maxHealth: 100
   damageDone: 25
+  damageTimeout: .75
   aggroRangeEngage: 5
   aggroRangeFalloff: 10
   runSpeed: 5
 --- !u!136 &13620466
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .119999997
+  m_Height: .219999999
+  m_Direction: 1
+  m_Center: {x: 0, y: .129999995, z: 0}
+--- !u!136 &13626052
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
