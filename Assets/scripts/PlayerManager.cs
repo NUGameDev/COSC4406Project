@@ -124,7 +124,7 @@ public class PlayerManager: MonoBehaviour {
     public void run(float direction)
     {
         direction = Mathf.Clamp(direction, -1.0f, 1.0f);
-        Transform tmesh = transform.Find("Armature").transform;
+        Transform tmesh = transform.Find("SportyGirl").transform;
         //rotate model so he is facing in direction of movement. 
         if (direction < 0.0f)
         {
