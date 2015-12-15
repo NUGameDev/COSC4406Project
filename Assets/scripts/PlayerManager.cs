@@ -31,6 +31,7 @@ public class PlayerManager: MonoBehaviour {
 
     public Transform PufferCloud = null;
 
+	private ConfigManager cm;
     private Rigidbody rb;
     private int direction = 1; //1 means looking left, -1 means looking right. 
     private bool grounded = false;
@@ -39,10 +40,25 @@ public class PlayerManager: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        currentBreath = MaxBreath;
-        currentPufferCharge = MaxPufferCharge;
-
+		cm = GetComponent<ConfigManager> ();
         rb = GetComponent<Rigidbody>();
+        // load value from config file if they exist. Otherwise use the defaults from the unity editor. 
+        /*
+		MoveSpeed =  (float)Double.Parse(cm.Load ("MoveSpeed"));
+		JumpSpeed =  (float)Double.Parse(cm.Load ("JumpSpeed"));
+		JumpDepletionAmount =  (float)Double.Parse(cm.Load ("JumpDepletionAmount"));
+		RunDepletionRate =  (float)Double.Parse(cm.Load ("RunDepletionRate"));
+		BreathRecoveryTimeout =  Int32.Parse(cm.Load ("BreathRecoveryTimeout"));
+		BreathRecoveryRate =  (float)Double.Parse(cm.Load ("BreathRecoveryRate"));
+		PufferBreathRecovered =  (float)Double.Parse(cm.Load ("PufferBreathRecovered"));
+		MaxBreath =  (float)Double.Parse(cm.Load ("MaxBreath"));
+		MaxPufferCharge =  (float)Double.Parse(cm.Load ("MaxPufferCharge"));
+		PufferCostSelf =  (float)Double.Parse(cm.Load ("PufferCostSelf"));
+		PufferCostSpray =  (float)Double.Parse(cm.Load ("PufferCostSpray"));
+        */
+		this.transform.position = GameObject.Find ("LevelStart").transform.position + new Vector3 (0.0f, 0.5f, 0.0f);
+		currentBreath = MaxBreath;
+		currentPufferCharge = MaxPufferCharge;
 	}
 
     /// <summary>
@@ -108,7 +124,7 @@ public class PlayerManager: MonoBehaviour {
     public void run(float direction)
     {
         direction = Mathf.Clamp(direction, -1.0f, 1.0f);
-        Transform tmesh = transform.Find("Armature").transform;
+        Transform tmesh = transform.Find("SportyGirl").transform;
         //rotate model so he is facing in direction of movement. 
         if (direction < 0.0f)
         {
