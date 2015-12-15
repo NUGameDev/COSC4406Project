@@ -30,6 +30,6 @@ public class ProgressScript : MonoBehaviour
 	//Each frame, the player position is used to set the position on the progress bar
 	void Update () 
 	{
-		//progressCircle.anchoredPosition = new Vector3((player.position.x /*playerPos*/ - startPos) * factor, 0f, 0f);
+		progressCircle.anchoredPosition = new Vector3((player.position.x /*playerPos*/ - startPos) * factor, 0f, 0f);
 	}
 }

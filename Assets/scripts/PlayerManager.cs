@@ -56,7 +56,7 @@ public class PlayerManager: MonoBehaviour {
 		PufferCostSelf =  (float)Double.Parse(cm.Load ("PufferCostSelf"));
 		PufferCostSpray =  (float)Double.Parse(cm.Load ("PufferCostSpray"));
         */
-
+		this.transform.position = GameObject.Find ("LevelStart").transform.position + new Vector3 (0.0f, 0.5f, 0.0f);
 		currentBreath = MaxBreath;
 		currentPufferCharge = MaxPufferCharge;
 	}
