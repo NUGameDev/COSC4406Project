@@ -43,6 +43,8 @@ GameObject:
   - 223: {fileID: 22366614}
   - 114: {fileID: 11465830}
   - 114: {fileID: 11421204}
+  - 114: {fileID: 11494550}
+  - 114: {fileID: 11403478}
   m_Layer: 5
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -159,7 +161,7 @@ GameObject:
   - 224: {fileID: 22403734}
   - 114: {fileID: 11406378}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: PufferSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +177,7 @@ GameObject:
   - 224: {fileID: 22414348}
   - 114: {fileID: 11422356}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: BreathSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,6 +352,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11403478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6f58ccbac250349b392a5fa53b7d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configdata: 
+  line: 
 --- !u!114 &11406378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,11 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57db93d797bf5d94696b2550092a1674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPos: 0
-  endPos: 100
-  progressCircle: {fileID: 22462906}
   progressBar: {fileID: 22454874}
-  playerPos: 0
 --- !u!114 &11421204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -687,6 +698,19 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &11494550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11bc376c9f45e014890ec3a196b796de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pufferSlider: {fileID: 11406378}
+  breathSlider: {fileID: 11422356}
 --- !u!114 &11496950
 MonoBehaviour:
   m_ObjectHideFlags: 1
