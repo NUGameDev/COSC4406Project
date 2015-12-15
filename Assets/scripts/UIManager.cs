@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	void PauseGame(bool state){ //pause the game or unpause it
-        print("Pause Game");
+        //print("Pause Game");
 		if (state) {
 			PausePanel.SetActive (true);
 			Time.timeScale = 0.0f;
