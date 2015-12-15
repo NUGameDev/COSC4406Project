@@ -10,7 +10,8 @@ public class LevelEnd : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //check name of collider
-        if (other.gameObject.name == "levelEnd")
+        if (other.gameObject.name == "Player")
+            print("Got level end");
             //dummy scene
             Application.LoadLevel("endscene");
     }
