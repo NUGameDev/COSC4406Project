@@ -11,20 +11,20 @@ public class PlayerManager: MonoBehaviour {
     private const float ROTATION_ANGLE_RIGHT = 90.0f;
     private const float ROTATION_ANGLE_LEFT = 270.0f; 
 
-    public float MoveSpeed = 8.0f;
-    public float JumpSpeed = 10.0f;
+    public float MoveSpeed;
+    public float JumpSpeed;
 
-    public float JumpDepletionAmount = 5.0f;
-    public float RunDepletionRate = 1.5f;
-    public int   BreathRecoveryTimeout = 2000;
-    public float BreathRecoveryRate = 3.5f;
-    public float PufferBreathRecovered = 25f;
+    public float JumpDepletionAmount;
+    public float RunDepletionRate;
+    public int   BreathRecoveryTimeout;
+    public float BreathRecoveryRate;
+    public float PufferBreathRecovered;
 
-    public float MaxBreath = 100f;
-    public float MaxPufferCharge = 100f;
+    public float MaxBreath;
+    public float MaxPufferCharge;
 
-    public float PufferCostSelf = 20f;
-    public float PufferCostSpray = 10f;
+    public float PufferCostSelf;
+    public float PufferCostSpray;
 
     private float currentBreath;
     private float currentPufferCharge;
@@ -38,12 +38,16 @@ public class PlayerManager: MonoBehaviour {
 
     private Stopwatch recoveryTimer = new Stopwatch();
 
+	private ActionsNew actionController;
+
 	// Use this for initialization
 	void Start () {
 		cm = GetComponent<ConfigManager> ();
         rb = GetComponent<Rigidbody>();
+		actionController = GetComponentInChildren<ActionsNew> ();
         // load value from config file if they exist. Otherwise use the defaults from the unity editor. 
-        /*
+		cm = GameObject.Find ("Configuration").GetComponent <ConfigManager>();// GetComponent<ConfigManager> ();
+
 		MoveSpeed =  (float)Double.Parse(cm.Load ("MoveSpeed"));
 		JumpSpeed =  (float)Double.Parse(cm.Load ("JumpSpeed"));
 		JumpDepletionAmount =  (float)Double.Parse(cm.Load ("JumpDepletionAmount"));
@@ -55,7 +59,7 @@ public class PlayerManager: MonoBehaviour {
 		MaxPufferCharge =  (float)Double.Parse(cm.Load ("MaxPufferCharge"));
 		PufferCostSelf =  (float)Double.Parse(cm.Load ("PufferCostSelf"));
 		PufferCostSpray =  (float)Double.Parse(cm.Load ("PufferCostSpray"));
-        */
+
 		this.transform.position = GameObject.Find ("LevelStart").transform.position + new Vector3 (0.0f, 0.5f, 0.0f);
 		currentBreath = MaxBreath;
 		currentPufferCharge = MaxPufferCharge;
@@ -86,7 +90,7 @@ public class PlayerManager: MonoBehaviour {
     /// <returns>True if the player is currently running. False otherwise. </returns>
     public bool isRunning()
     {
-        if (rb == null) return false;
+        if (rb == null || !grounded) return false;
         return Mathf.Abs(rb.velocity.x) > 0.1;
     }
 
@@ -129,12 +133,12 @@ public class PlayerManager: MonoBehaviour {
         if (direction < 0.0f)
         {
             this.direction = -1;
-            tmesh.eulerAngles = new Vector3(tmesh.eulerAngles.x, ROTATION_ANGLE_LEFT, tmesh.eulerAngles.z);
+            tmesh.eulerAngles = Vector3.Lerp(tmesh.eulerAngles, new Vector3(tmesh.eulerAngles.x, ROTATION_ANGLE_LEFT, tmesh.eulerAngles.z), 0.5f);
         }
         else if (direction > 0.0f)
         {
             this.direction = 1;
-            tmesh.eulerAngles = new Vector3(tmesh.eulerAngles.x, ROTATION_ANGLE_RIGHT, tmesh.eulerAngles.z);
+			tmesh.eulerAngles = Vector3.Lerp(tmesh.eulerAngles, new Vector3(tmesh.eulerAngles.x, ROTATION_ANGLE_RIGHT, tmesh.eulerAngles.z), 0.5f);
         }
 
         //now apply the velocity to the rigidbody.
@@ -149,6 +153,7 @@ public class PlayerManager: MonoBehaviour {
     {
         if (currentBreath < JumpDepletionAmount) return;
         if (!grounded) return;
+		actionController.Jump ();
         currentBreath -= JumpDepletionAmount;
         rb.velocity += new Vector3(0.0f, JumpSpeed, 0.0f);
     }
@@ -158,11 +163,16 @@ public class PlayerManager: MonoBehaviour {
         //Start/reset the recovery timer based on if we're running or not. Also deplete breath
         if (this.isRunning())
         {
+			actionController.Run ();
             recoveryTimer.Reset();
             this.DepleteBreath(RunDepletionRate * Time.smoothDeltaTime);
 
         }
-        else recoveryTimer.Start();
+        else 
+		{
+			recoveryTimer.Start();
+			actionController.Stay ();
+		}
 
         //if we've passed the recovery time then we can start recovering breath
         if(recoveryTimer.ElapsedMilliseconds > BreathRecoveryTimeout)

@@ -2,15 +2,17 @@
 using System.Collections;
 
 [RequireComponent (typeof (Animator))]
-public class Actions : MonoBehaviour {
+public class ActionsNew : MonoBehaviour {
 
 	private Animator animator;
+	private PlayerManager pm;
 
 	const int countOfDamageAnimations = 3;
 	int lastDamageAnimation = -1;
 
-	void Awake () {
+	void Start () {
 		animator = GetComponent<Animator> ();
+		pm = GetComponentInParent<PlayerManager> ();
 	}
 
 	public void Stay () {
@@ -21,7 +23,7 @@ public class Actions : MonoBehaviour {
 	public void Walk () {
 		animator.SetBool("Aiming", false);
 		animator.SetFloat ("Speed", 0.5f);
-		print ("here");
+	//	print ("here");
 	}
 
 	public void Run () {
@@ -54,7 +56,7 @@ public class Actions : MonoBehaviour {
 
 	public void Jump () {
 		animator.SetBool ("Squat", false);
-		animator.SetFloat ("Speed", 0f);
+		//animator.SetFloat ("Speed", 0f);
 		animator.SetBool("Aiming", false);
 		animator.SetTrigger ("Jump");
 	}
