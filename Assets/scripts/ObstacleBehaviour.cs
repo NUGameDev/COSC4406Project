@@ -24,8 +24,11 @@ public  class ObstacleBehaviour : MonoBehaviour {
     public bool hasAggro = false;
     public bool canChase = false;
 
-    public int maxHealth = 100;
-    public int damageDone = 25;
+    public float maxHealth = 100;
+    public float damageDone = 10f;
+    public float damageTimeout = 0.75f;
+
+    private float playerCollideEnterTime = -100.0f;
 
     public float aggroRangeEngage = 5.0f;
     public float aggroRangeFalloff = 10.0f;
@@ -33,7 +36,7 @@ public  class ObstacleBehaviour : MonoBehaviour {
     public float runSpeed = 5.0f;
 
     private AggroState aggroState = AggroState.Idle;
-    private int currentHealth;
+    private float currentHealth;
     GameObject player = null; //reference to the player object in the scene
     Rigidbody rb = null; //rigidbody of the obstacle, if one exists. 
 
@@ -104,7 +107,7 @@ public  class ObstacleBehaviour : MonoBehaviour {
         this.rb.velocity = new Vector3(direction * this.runSpeed, rb.velocity.y, rb.velocity.z);
     }
 
-    public int getHealth()
+    public float getHealth()
     {
         return this.currentHealth;
     }
@@ -115,11 +118,24 @@ public  class ObstacleBehaviour : MonoBehaviour {
     }
 
     //Do damage to the obstacle. 
-    public void doDamage(int damage)
+    public void takeDamage(int damage)
     {
         currentHealth = Mathf.Max(0, currentHealth - damage);
     }
     
+    public void OnCollisionStay(Collision collision)
+    {
+        float elapsedTimeSinceLastDmg = Time.time - this.playerCollideEnterTime;
+        
+        if (collision.gameObject.name.Equals("Player") && elapsedTimeSinceLastDmg >= this.damageTimeout)
+        {
+            print(string.Format("Elapsed time is {0}", elapsedTimeSinceLastDmg));
+            print(string.Format("doing some damage, set player time to {0}", Time.time));
+            //do some damage and reset the countdown timer
+            this.playerCollideEnterTime = Time.time;
+            player.GetComponent<PlayerManager>().DepleteBreath(this.damageDone);
+        }
+    }
 
    
 }
