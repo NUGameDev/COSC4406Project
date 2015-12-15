@@ -12,6 +12,7 @@ GameObject:
   - 136: {fileID: 13626636}
   - 23: {fileID: 2384610}
   - 114: {fileID: 11458158}
+  - 114: {fileID: 11440100}
   m_Layer: 0
   m_Name: PufferRestore
   m_TagString: Untagged
@@ -62,6 +63,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191712}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11440100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6f58ccbac250349b392a5fa53b7d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configdata: 
+  line: 
 --- !u!114 &11458158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,7 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7591e6b00adbf44b701863e707d6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pm: {fileID: 0}
   pufferRecharge: 20
 --- !u!136 &13626636
 CapsuleCollider:
