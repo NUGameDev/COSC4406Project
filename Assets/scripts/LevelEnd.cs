@@ -14,6 +14,7 @@ public class LevelEnd : MonoBehaviour {
 			pm = GameObject.Find("Player").GetComponent<PlayerManager>();
 			PlayerPrefs.SetInt ("LevelScore", pm.getscore());
 			PlayerPrefs.SetInt ("LevelTime", pm.gettime());
+			PlayerPrefs.SetInt ("PufferCharge", (int)pm.getPufferCharge());
 			PlayerPrefs.Save();
             print("Got level end");
             //dummy scene

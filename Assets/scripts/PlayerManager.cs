@@ -145,7 +145,9 @@ public class PlayerManager: MonoBehaviour {
         }
 
         //now apply the velocity to the rigidbody.
-        rb.velocity = new Vector3(direction * MoveSpeed, rb.velocity.y, rb.velocity.z);
+		if (getBreath () > 5) {
+			rb.velocity = new Vector3 (direction * MoveSpeed, rb.velocity.y, rb.velocity.z);
+		}
     }
 
     /// <summary>

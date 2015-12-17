@@ -17,8 +17,8 @@ public class ScoreDispla : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		time = PlayerPrefs.GetInt ("LevelTime");
-		score = PlayerPrefs.GetInt ("LevelScore") + (4000 - (50*time));
-		ScoreCalc.text =  "Score = " + PlayerPrefs.GetInt ("LevelScore")+" + 4000 - (50*"+time+")";
+		score = PlayerPrefs.GetInt ("LevelScore") + (4000 - (50*time)) + (PlayerPrefs.GetInt ("PufferCharge")*10);
+		ScoreCalc.text =  "Score = " + PlayerPrefs.GetInt ("LevelScore")+" + 4000 - (50*"+time+") + ("+ PlayerPrefs.GetInt ("PufferCharge")+"*10)" ;
 		ScoreText.text = "Final Score: " + score;
 		TimeText.text = "Time: " + time + " seconds";
 	}
