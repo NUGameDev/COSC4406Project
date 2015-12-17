@@ -18,7 +18,7 @@ public class ScoreDispla : MonoBehaviour {
 	void Update () {
 		time = PlayerPrefs.GetInt ("LevelTime");
 		score = PlayerPrefs.GetInt ("LevelScore") + (4000 - (50*time)) + (PlayerPrefs.GetInt ("PufferCharge")*10);
-		ScoreCalc.text =  "Score = " + PlayerPrefs.GetInt ("LevelScore")+" + 4000 - (50*"+time+") + ("+ PlayerPrefs.GetInt ("PufferCharge")+"*10)" ;
+		ScoreCalc.text =  "Score = " + PlayerPrefs.GetInt ("LevelScore")+ "+ \nTime Bonus: 4000 - (50*"+time+" seconds) +  \nPuffer Charge Bonus: ("+ PlayerPrefs.GetInt ("PufferCharge")+"*10)" ;
 		ScoreText.text = "Final Score: " + score;
 		TimeText.text = "Time: " + time + " seconds";
 	}
