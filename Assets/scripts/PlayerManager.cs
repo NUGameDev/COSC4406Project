@@ -14,6 +14,9 @@ public class PlayerManager: MonoBehaviour {
     public float MoveSpeed;
     public float JumpSpeed;
 
+	public int currenttime;
+	public int currentscore;
+
     public float JumpDepletionAmount;
     public float RunDepletionRate;
     public int   BreathRecoveryTimeout;
@@ -207,4 +210,14 @@ public class PlayerManager: MonoBehaviour {
         amount = Math.Max(amount, 0.0f);
         this.currentPufferCharge = Math.Min(MaxPufferCharge, amount + currentPufferCharge);
     }
+	public void addscore(int amount){
+		currentscore += amount;
+	}
+	public int getscore(){
+		return currentscore;
+	}
+	public int gettime(){
+		currenttime = (int)Time.timeSinceLevelLoad;
+		return currenttime;
+	}
 }

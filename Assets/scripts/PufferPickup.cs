@@ -6,6 +6,7 @@ using System;
 public class PufferPickup : MonoBehaviour {
 
 	public float pufferRecharge = 20.0f;
+	public int pufferscore = 1000;
 	private ConfigManager cm;
 	private float yCenter;
 	private float yMove;
@@ -37,6 +38,7 @@ public class PufferPickup : MonoBehaviour {
 	{
 		if(other.CompareTag ("Player"))
 		{
+			pm.addscore(pufferscore);
 			pm.addPufferCharge(pufferRecharge);
 			Destroy(gameObject); //destroy this capsule
 		}
