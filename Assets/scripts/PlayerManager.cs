@@ -117,10 +117,10 @@ public class PlayerManager: MonoBehaviour {
         if (this.currentPufferCharge < PufferCostSpray) return;
         currentPufferCharge -= PufferCostSpray;
         //create puffer ball object
-        float xoffset = this.direction * 1.5f;
+        float xoffset = this.direction * 1.0f;
 
         Instantiate(PufferCloud,
-            new Vector3(transform.position.x + xoffset, transform.position.y + 1.5f, transform.position.z),
+            new Vector3(transform.position.x + xoffset, transform.position.y + 1.0f, transform.position.z),
             Quaternion.identity);
     }
 	
