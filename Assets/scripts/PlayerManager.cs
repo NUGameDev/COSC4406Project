@@ -11,23 +11,23 @@ public class PlayerManager: MonoBehaviour {
     private const float ROTATION_ANGLE_RIGHT = 90.0f;
     private const float ROTATION_ANGLE_LEFT = 270.0f; 
 
-    public float MoveSpeed;
-    public float JumpSpeed;
+    public float MoveSpeed = 8f;
+    public float JumpSpeed = 7.5f;
 
-	public int currenttime;
-	public int currentscore;
+    public int currenttime = 0;
+	public int currentscore = 0;
 
-    public float JumpDepletionAmount;
-    public float RunDepletionRate;
-    public int   BreathRecoveryTimeout;
-    public float BreathRecoveryRate;
-    public float PufferBreathRecovered;
+    public float JumpDepletionAmount = 5f;
+    public float RunDepletionRate = 1.5f;
+    public int   BreathRecoveryTimeout = 2000;
+    public float BreathRecoveryRate = 3.5f;
+    public float PufferBreathRecovered = 25f;
 
-    public float MaxBreath;
-    public float MaxPufferCharge;
+    public float MaxBreath = 100f;
+    public float MaxPufferCharge = 100f;
 
-    public float PufferCostSelf;
-    public float PufferCostSpray;
+    public float PufferCostSelf = 20f;
+    public float PufferCostSpray = 10f;
 
     private float currentBreath;
     private float currentPufferCharge;
@@ -82,6 +82,12 @@ public class PlayerManager: MonoBehaviour {
     {
         return this.currentBreath;
     }
+
+    public void setBreath(float b)
+    {
+        this.currentBreath = Mathf.Max(0.0f, Mathf.Min(this.MaxBreath, b));
+    }
+
 
     public float getPufferCharge()
     {
