@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Menu Scene.unity
   - enabled: 1
-    path: Assets/_Scenes/level_v1.unity
+    path: Assets/_Scenes/level_1.unity
   - enabled: 1
     path: Assets/_Scenes/endscene.unity
   - enabled: 1
@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/_Scenes/HelpMain.unity
   - enabled: 1
     path: Assets/_Scenes/UserManual Scene.unity
+  - enabled: 1
+    path: Assets/_Scenes/level_2.unity
