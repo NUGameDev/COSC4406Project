@@ -135,7 +135,11 @@ public  class ObstacleBehaviour : MonoBehaviour {
             this.playerCollideEnterTime = Time.time;
             player.GetComponent<PlayerManager>().DepleteBreath(this.damageDone);
         }
-    }
 
+    }
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.CompareTag ("Cloud"))
+			Destroy (gameObject);
+	}
    
 }

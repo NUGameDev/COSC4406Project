@@ -9,6 +9,8 @@ public class HUDUpdater : MonoBehaviour {
 	ConfigManager cm;
     public Slider pufferSlider;
     public Slider breathSlider;
+	public Text ScoreText;
+	public Text TimeText;
     // Use this for initialization
     void Start () {
 		cm = GameObject.Find ("Configuration").GetComponent <ConfigManager>();// GetComponent<ConfigManager> ();
@@ -19,6 +21,8 @@ public class HUDUpdater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		ScoreText.text = "Score: " + pm.getscore();
+		TimeText.text = "Time: " + pm.gettime();
         breathSlider.value = pm.getBreath();
         pufferSlider.value = pm.getPufferCharge();
 	}

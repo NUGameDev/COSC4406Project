@@ -9,10 +9,13 @@ using System.Diagnostics;
 /// </summary>
 public class PlayerManager: MonoBehaviour {
     private const float ROTATION_ANGLE_RIGHT = 90.0f;
-    private const float ROTATION_ANGLE_LEFT = 270.0f; 
-
+    private const float ROTATION_ANGLE_LEFT = 270.0f;
+    private const float WINTER_PENALTY = 25.0f;
     public float MoveSpeed;
     public float JumpSpeed;
+
+	public int currenttime;
+	public int currentscore;
 
     public float JumpDepletionAmount;
     public float RunDepletionRate;
@@ -39,7 +42,9 @@ public class PlayerManager: MonoBehaviour {
     private Stopwatch recoveryTimer = new Stopwatch();
 
 	private ActionsNew actionController;
-
+    //check weather
+    public bool isWinter = false;
+    public float recoverModifier = 1.0f;
 	// Use this for initialization
 	void Start () {
 		cm = GetComponent<ConfigManager> ();
@@ -54,7 +59,8 @@ public class PlayerManager: MonoBehaviour {
 		RunDepletionRate =  (float)Double.Parse(cm.Load ("RunDepletionRate"));
 		BreathRecoveryTimeout =  Int32.Parse(cm.Load ("BreathRecoveryTimeout"));
 		BreathRecoveryRate =  (float)Double.Parse(cm.Load ("BreathRecoveryRate"));
-		PufferBreathRecovered =  (float)Double.Parse(cm.Load ("PufferBreathRecovered"));
+        if (isWinter) recoverModifier = WINTER_PENALTY/100; //if its winter then recovery is 25% less than normal
+        PufferBreathRecovered =  (float)Double.Parse(cm.Load ("PufferBreathRecovered"))*recoverModifier;
 		MaxBreath =  (float)Double.Parse(cm.Load ("MaxBreath"));
 		MaxPufferCharge =  (float)Double.Parse(cm.Load ("MaxPufferCharge"));
 		PufferCostSelf =  (float)Double.Parse(cm.Load ("PufferCostSelf"));
@@ -63,6 +69,8 @@ public class PlayerManager: MonoBehaviour {
 		this.transform.position = GameObject.Find ("LevelStart").transform.position + new Vector3 (0.0f, 0.5f, 0.0f);
 		currentBreath = MaxBreath;
 		currentPufferCharge = MaxPufferCharge;
+
+       
 	}
 
     /// <summary>
@@ -114,10 +122,10 @@ public class PlayerManager: MonoBehaviour {
         if (this.currentPufferCharge < PufferCostSpray) return;
         currentPufferCharge -= PufferCostSpray;
         //create puffer ball object
-        float xoffset = this.direction * 1.5f;
+        float xoffset = this.direction * 1.0f;
 
         Instantiate(PufferCloud,
-            new Vector3(transform.position.x + xoffset, transform.position.y + 1.5f, transform.position.z),
+            new Vector3(transform.position.x + xoffset, transform.position.y + 1.0f, transform.position.z),
             Quaternion.identity);
     }
 	
@@ -142,7 +150,9 @@ public class PlayerManager: MonoBehaviour {
         }
 
         //now apply the velocity to the rigidbody.
-        rb.velocity = new Vector3(direction * MoveSpeed, rb.velocity.y, rb.velocity.z);
+		if (getBreath () > 5) {
+			rb.velocity = new Vector3 (direction * MoveSpeed, rb.velocity.y, rb.velocity.z);
+		}
     }
 
     /// <summary>
@@ -178,6 +188,7 @@ public class PlayerManager: MonoBehaviour {
         if(recoveryTimer.ElapsedMilliseconds > BreathRecoveryTimeout)
         {
             currentBreath = Math.Min(MaxBreath, currentBreath + BreathRecoveryRate * Time.smoothDeltaTime);
+            
         }
     }
 
@@ -207,4 +218,14 @@ public class PlayerManager: MonoBehaviour {
         amount = Math.Max(amount, 0.0f);
         this.currentPufferCharge = Math.Min(MaxPufferCharge, amount + currentPufferCharge);
     }
+	public void addscore(int amount){
+		currentscore += amount;
+	}
+	public int getscore(){
+		return currentscore;
+	}
+	public int gettime(){
+		currenttime = (int)Time.timeSinceLevelLoad;
+		return currenttime;
+	}
 }
