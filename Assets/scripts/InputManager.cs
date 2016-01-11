@@ -24,7 +24,6 @@ public class InputManager: MonoBehaviour
         pm.run(Input.GetAxisRaw("Horizontal"));
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.LogError("Got Jump");
             pm.jump();
         }
         if (Input.GetButtonDown("PufferSpray")) pm.PufferSpray();
