@@ -344,7 +344,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1540660793}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &629481775
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ RectTransform:
   - {fileID: 1552207303}
   - {fileID: 1384567195}
   m_Father: {fileID: 1540660793}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 4.50100708, y: -.000416930008}
@@ -683,7 +683,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1540660793}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 1.90733954e-05, y: 153.5}
@@ -927,7 +927,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1540660793}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 4.5, y: 0}
@@ -1144,11 +1144,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 934191555}
-  - {fileID: 1970123009}
   - {fileID: 943968803}
   - {fileID: 1284203819}
   - {fileID: 629481779}
   - {fileID: 432628764}
+  - {fileID: 1970123009}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -1452,7 +1452,7 @@ RectTransform:
   m_Children:
   - {fileID: 1063399078}
   m_Father: {fileID: 1540660793}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -139}
